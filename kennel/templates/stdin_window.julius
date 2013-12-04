@@ -1,0 +1,26 @@
+function StdinWindow(id, settings_id) {
+  this.id = id;
+  this.settings_id = settings_id;
+
+  // not initialized
+  if ($(this.id).children().size() == 0) {
+    this._initialize();
+  }
+}
+
+StdinWindow.prototype._initialize = function() {
+  var self = this;
+
+  var ed = $('#stdin-editor');
+  ed.prop('sendstdin', null);
+  ed.keypress(function(ev) {
+    if (ev.keyCode == KeyboardEvent.DOM_VK_ENTER
+        && !ev.ctrlKey && !ev.altKey
+        && ed.prop('sendstdin'))
+    {
+      ev.preventDefault();
+      ed.prop('sendstdin')(ed.val() + (ev.shiftKey ? '' : '\n'));
+      ed.val('');
+    }
+  });
+}

@@ -152,6 +152,8 @@ ResultWindow.prototype.post_code = function(compiler, code) {
   var finalize = function() {
     src.close();
 
+    $('#stdin-editor').prop('sendstdin', null);
+
     var outputs = self._output_window().find('p').map(function(n,e) {
         return { 'type': $(e).attr('data-type'), 'output': $(e).text() };
     });
@@ -205,6 +207,23 @@ ResultWindow.prototype.post_code = function(compiler, code) {
   src.onerror = function() {
     finalize();
   }
+
+  $('#stdin-editor').prop('sendstdin', function(i,p) { return function(text) {
+    // ここでテキストを送信したい
+    var output = self._output_window();
+    if (preview_paragraph &&
+        preview_paragraph.hasClass('StdIn')) {
+      var p = preview_paragraph;
+      p.text(p.text() + text);
+    } else {
+      var p = $('<p>').addClass('StdIn')
+                      .attr('data-type', 'StdIn')
+                      .text(text)
+                      .appendTo(output);
+      preview_paragraph = p;
+    }
+    output[0].scrollTop = output[0].scrollHeight;
+  }});
 }
 
 ResultWindow.prototype.set_code = function(compiler, code, outputs) {

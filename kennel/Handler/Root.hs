@@ -53,6 +53,11 @@ resultContainer = do
   Y.addScriptRemote "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
   $(widgetFile "result_container")
 
+stdinWindow :: Widget
+stdinWindow = do
+  Y.addScriptRemote "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+  $(widgetFile "stdin_window")
+
 resultWindow :: Widget
 resultWindow = do
   Y.addScriptRemote "//platform.twitter.com/widgets.js"

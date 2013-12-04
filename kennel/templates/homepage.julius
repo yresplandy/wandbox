@@ -103,6 +103,8 @@ $(function() {
 
   update_compile_command(compiler);
 
+  var stdin = new StdinWindow('#stdin-window', null);
+
   editor.focus();
 });
 

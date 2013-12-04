@@ -1,0 +1,4 @@
+<div .row-fluid>
+  <div .span1>
+    stdin:
+  <textarea .span11 #stdin-editor>
