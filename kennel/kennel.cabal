@@ -25,6 +25,7 @@ library
                      Handler.Source
                      Handler.Permlink
                      Handler.Api
+                     Handler.Terms
                      ChanMap
                      Cache
                      Api

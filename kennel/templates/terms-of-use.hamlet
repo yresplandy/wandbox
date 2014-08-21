@@ -1,0 +1,9 @@
+<div .row>
+  <div .col-md-8 .col-md-offset-1>
+    <ol .terms-of-use>
+      <li>term one
+      <li>term two
+<div .row>
+  <div .col-md-10>
+    <p .text-right>
+      <a href="@{RootR}">Back
